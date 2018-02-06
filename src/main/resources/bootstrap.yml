@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: acls-service
+  profiles:
+    active: ${__ENV:dev}
+#  cloud:
+#    config:
+#      uri: ${__CONFIG_SERVER_URL:http://localhost:8888/}
+
+management:
+  security:
+    enabled: false

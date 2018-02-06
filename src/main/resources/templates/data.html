@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Acls Details</title>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-spacing: 0px;
+}
+
+th, td {
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+	<h2>ACLS DATA</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>User Name</th>
+				<th>password</th>
+				<th>Role</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${userList}">
+				<td th:text="${user.userName}"></td>
+				<td th:text="${user.password}"></td>
+				<td th:text="${user.role}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head><title>Acls Details</title>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-spacing: 0px;
+}
+
+th, td {
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+	
+	<h2>Search for ACLs</h2>
+	<form action="/search" method="POST">
+		<table border="0">
+			<tr>
+				<td>Service Name</td>
+				<td><input type="text" id="serviceName" name="serviceName" /></td>
+			</tr>
+			<tr>
+				<td>Form Name</td>
+				<td><input type="text" id="formName" name="formName" /></td>
+			</tr>
+			<tr>
+				<td>Attr Name</td>
+				<td><input type="text" id="attrName" name="attrName" /></td>
+			</tr>
+			<tr>
+				<td>Role</td>
+				<td><input type="text" id="role" name="role" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" /></td>
+			</tr>
+		</table>
+	</form>
+	
+	<h2>Seach Results</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Service Name</th>
+				<th>Form Name</th>
+				<th>Attr Name</th>
+				<th>Role</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="acls : ${aclsList}">
+				<td th:text="${acls.serviceName}"></td>
+				<td th:text="${acls.formName}"></td>
+				<td th:text="${acls.attrName}"></td>
+				<td th:text="${acls.role}"></td>
+				<td th:text="${acls.actionType}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+</body>
+</html>

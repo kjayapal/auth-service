@@ -1,0 +1,116 @@
+server:
+  #context-path: /${spring.application.name}
+  tomcat:
+    accesslog:
+      enabled: false
+    basedir: .
+  port: 8090
+
+spring:
+  application:
+    name: auth-server
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+  cache:
+    type: none
+  profiles:
+    active: local
+  output:
+    ansi:
+      enabled: ALWAYS
+  jackson:
+    default-property-inclusion: non_null
+  cloud:
+    config:
+      allow-override: true
+      override-none: false
+      fail-fast: true
+      override-system-properties: false
+      enabled: false
+  sleuth:
+    web:
+      enabled: true
+    sampler:
+      percentage: 100
+#  zipkin:
+#    base-url: http://localhost:8680/
+#    flush-interval: 15
+#    enabled: false
+  data:
+    mongodb:
+      uri: mongodb://traine:training123@pfol-mongodb01-qa.ftdi.com:27017/training
+      #repositories:
+      #   enabled: false
+#  redis:
+#    cluster:
+#      nodes: freshdapp01v1.ftdi.com:7000,freshdapp01v1.ftdi.com:7001,freshdapp01v1.ftdi.com:7002
+#      max-redirects: 3
+#    host: freshdapp01v1.ftdi.com
+#    port: 7000
+
+logging:
+  level:
+    ROOT: INFO
+    #org.springframework.data.redis: DEBUG
+
+
+service:
+  metrics:
+    dropwizard:
+      enabled: true
+    prometheus:
+      enabled: true
+  git:
+    enabled: false
+  vip:
+    enabled: false
+  swagger:
+    enabled: true
+  jsonp:
+    enabled: true
+  logging:
+    enabled: true
+#  memcache:
+#    enabled: false
+#    configs:
+#      - ttl: 300
+#        servers: localhost:11211
+#        name: default
+#      - ttl: 30
+#        servers: localhost:11211
+#        name: default1
+
+
+
+#memcached:
+#  cache:
+#    servers: localhost:11211
+#    mode: static
+
+
+#management:
+#  security:
+#    enabled: false
+
+hystrix:
+  command:
+    helloCommandKey:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+      circuitBreaker:
+        requestVolumeThreshold: 4
+        sleepWindowInMilliseconds: 60000
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 180000
+  threadpool:
+    helloThreadPoolKey:
+      coreSize: 30
+      metrics:
+        rollingStats:
+          timeInMilliseconds:18000
+
